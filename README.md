@@ -1,0 +1,1 @@
+# Wszystkie labki z przedmiotu *Projektowanie aplikacji mobilnych*, semestr 7
