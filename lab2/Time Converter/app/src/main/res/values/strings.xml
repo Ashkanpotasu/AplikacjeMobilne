@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Time Converter</string>
+    <string name="wpisz_minuty">Wpisz minuty</string>
+    <string name="konwertuj_na">Konwertuj na:</string>
+    <string name="sekundy">Sekundy</string>
+    <string name="godziny">Godziny</string>
+    <string name="dni">Dni</string>
+    <string name="wynik">Wynik: %s</string>
+    <string name="oblicz">Oblicz</string>
+    <string name="zaokraglic">Zaokrąglić?</string>
+</resources>
