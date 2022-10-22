@@ -1,96 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/minutes_to_convert"
-        android:layout_width="160dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/wpisz_minuty"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="16dp"
+        tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/service_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/konwertuj_na"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/minutes_to_convert" />
-
-    <RadioGroup
-        android:id="@+id/convert_options"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checkedButton="@id/option_seconds"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/service_question"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <RadioButton
-            android:id="@+id/option_seconds"
+        <ImageView
+            android:id="@+id/icon_minutes_to_convert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sekundy" />
+            android:layout_marginStart="60dp"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/minutes_to_convert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/minutes_to_convert"
+            app:srcCompat="@drawable/ic_time" />
 
-        <RadioButton
-            android:id="@+id/option_hours"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/minutes_to_convert"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/wpisz_minuty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/minutes_to_convert_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="numberDecimal"
+                android:textAlignment="center" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/icon_konwertuj_na"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/godziny" />
+            android:layout_marginStart="60dp"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/konwertuj_na"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/konwertuj_na"
+            app:srcCompat="@drawable/ic_convert" />
 
-        <RadioButton
-            android:id="@+id/option_days"
+        <TextView
+            android:id="@+id/konwertuj_na"
+            style="@style/Widget.TimeConverter.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dni" />
-    </RadioGroup>
+            android:layout_marginTop="15dp"
+            android:text="@string/konwertuj_na"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/minutes_to_convert" />
 
-    <Switch
-        android:id="@+id/round_up_switch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/zaokraglic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/convert_options" />
+        <RadioGroup
+            android:id="@+id/convert_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/option_seconds"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/konwertuj_na">
 
-    <Button
-        android:id="@+id/calculate_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/oblicz"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
+            <RadioButton
+                android:id="@+id/option_seconds"
+                style="@style/Widget.TimeConverter.CompoundButton.RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sekundy" />
 
-    <TextView
-        android:id="@+id/convert_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        tools:text="@string/wynik"
-        android:textSize="30sp"
-        android:textColor="@color/purple_200"
-        android:shadowColor="@color/purple_700"
-        android:shadowRadius="1"
-        android:shadowDy="2"
-        android:shadowDx="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calculate_button" />
+            <RadioButton
+                android:id="@+id/option_hours"
+                style="@style/Widget.TimeConverter.CompoundButton.RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/godziny" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioButton
+                android:id="@+id/option_days"
+                style="@style/Widget.TimeConverter.CompoundButton.RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dni" />
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/ic_round_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/round_up_switch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/round_up_switch"
+            app:srcCompat="@drawable/ic_round_up" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/round_up_switch"
+            style="@style/Widget.TimeConverter.CompoundButton.Switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:checked="true"
+            android:text="@string/zaokraglic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/convert_options" />
+
+        <Button
+            android:id="@+id/calculate_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/oblicz"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
+
+        <TextView
+            android:id="@+id/convert_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:shadowColor="@color/purple_700"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:textColor="@color/purple_200"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calculate_button"
+            tools:text="@string/wynik" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
